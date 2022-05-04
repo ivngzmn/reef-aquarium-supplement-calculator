@@ -223,6 +223,9 @@ body {
     .supplement-container {
         width: 25rem;
     }
+    .selectfont {
+        width: 10rem;
+    }
 }
 @media (max-width: 480px) {
     .container {
