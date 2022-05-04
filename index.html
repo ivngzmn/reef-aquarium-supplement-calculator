@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/normalize.css" rel="stylesheet" type="text/css" />
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+        <title>Reef Supplements Calculator</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <nav class="header">
+                    <a class="menu-icon" href="#">
+                        <svg
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16"
+                            />
+                        </svg>
+                    </a>
+                    <a class="menu-icon">
+                        <img
+                            class="logo"
+                            src="./assets/images/coral-logo.png"
+                        />
+                        <span class="logo-text">Reef Guru</span>
+                    </a>
+                    <div class="header-menu">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="header-icons">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                        >
+                            <path
+                                d="M437.02 330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521 243.251 404 198.548 404 148 404 66.393 337.607 0 256 0S108 66.393 108 148c0 50.548 25.479 95.251 64.262 121.962-36.21 12.495-69.398 33.136-97.281 61.018C26.629 379.333 0 443.62 0 512h40c0-119.103 96.897-216 216-216s216 96.897 216 216h40c0-68.38-26.629-132.667-74.98-181.02zM256 256c-59.551 0-108-48.448-108-108S196.449 40 256 40s108 48.448 108 108-48.449 108-108 108z"
+                            />
+                        </svg>
+                    </div>
+                </nav>
+            </header>
+
+            <section class="hero">
+                <h1 class="hero-title">Reef Supplements Calculator</h1>
+                <p class="hero-text">
+                    This page is designed to calculate reef aquarium supplements
+                    additions for Calcium, Alkalinity or Magnesium using
+                    commercial products or standard chemicals.
+                </p>
+            </section>
+
+            <section class="" aria-label="Reef Supplement Calculators">
+                <form action="" method="post" name="ChemForm" id="ChemForm">
+                    <!--Volume-->
+                    <div class="volume" aria-label="Volume">
+                        <span class="volume-title"
+                            >Net Aquarium Water Volume:</span
+                        >
+                        <input
+                            name="Volume"
+                            type="text"
+                            class="volume-input"
+                            id="Volume"
+                            tabindex="1"
+                            onBlur="validateForm('Volume','','RisNum','CurrCa','','NisNum','CurrAlk','','NisNum','CurrMag','','NisNum','DesCa','','NisNum','DesAlk','','NisNum','DesMag','','NisNum'); document.MM_returnValue"
+                            size="8"
+                            maxlength="5"
+                        />
+                        <select
+                            name="VolumeType"
+                            class="volume-select"
+                            tabindex="1"
+                        >
+                            <option value="g" selected>US Gallons</option>
+                            <option value="l">Liters</option>
+                        </select>
+                        <a href="#">How to calculate water volume</a>
+                    </div>
+                    <div class="reef-supplement-container">
+                        <!--Calcium--->
+                        <section
+                            class="supplement-container"
+                            aria-label="Calcium Calculator"
+                        >
+                            <span class="supplement-title">Calcium</span>
+                            <div class="supplement-input">
+                                <span class="supplement-text">Current Ca:</span>
+                                <input
+                                    name="CurrCa"
+                                    type="text"
+                                    id="CurrCa"
+                                    class="fieldfont"
+                                    tabindex="3"
+                                    size="7"
+                                    maxlength="6"
+                                />
+                                <span class="supplement-text">ppm</span>
+                            </div>
+                            <div class="supplement-input">
+                                <span class="supplement-text">Desired Ca:</span>
+                                <input
+                                    name="DesCa"
+                                    type="text"
+                                    id="DesCa"
+                                    class="fieldfont"
+                                    tabindex="4"
+                                    size="7"
+                                    maxlength="6"
+                                />
+                                <span class="supplement-text">ppm</span>
+                            </div>
+                            <span class="supplement-text">Product:</span>
+                            <select
+                                name="CaProductList"
+                                size="1"
+                                class="selectfont"
+                                id="select"
+                                tabindex="4"
+                                onChange="DoCalc(this.form)"
+                            >
+                                <option selected>Select a Product</option>
+                                <option value="ACACL2">
+                                    Anhydrous CaCl2 (Dow's Peladow)
+                                </option>
+                                <option value="DCACL2">
+                                    Calcium Chloride Dihydrate (Dow's Flake)
+                                </option>
+                                <option value="LW">
+                                    Limewater (saturated)
+                                </option>
+                                <option value="KLC">
+                                    Aquaforest Ca Plus (liquid)
+                                </option>
+                                <option value="AFCA">
+                                    Aquaforest Calcium (Powder)
+                                </option>
+                                <option value="BCAL">
+                                    Brightwell Calcion (Liquid)
+                                </option>
+                                <option value="ACACL2">
+                                    Brightwell Calcion (Powder)
+                                </option>
+                                <option value="BCARCA">
+                                    Brightwell ReefCode Part A Calcium (liquid)
+                                </option>
+                                <option value="BCARCAP">
+                                    Brightwell ReefCode Part A Calcium (Powder)
+                                </option>
+                                <option value="BCAN">
+                                    Brightwell Nano Code A (Calcium)
+                                </option>
+                                <option value="CRBCA">
+                                    Continuum Reef Basis Calcium (Liquid)
+                                </option>
+                                <option value="CRBCAP">
+                                    Continuum Reef Basis Calcium (Powder)
+                                </option>
+                                <option value="CRSA">
+                                    Continuum Reef Sculpture Part A (Calcium)
+                                </option>
+                                <option value="MECA">
+                                    MEcoral Calcium Quart/Diluted
+                                    Gallon/Dissolved Powder
+                                </option>
+                                <option value="FCACL2">
+                                    Fritz ProAquatics Calcium Chloride
+                                </option>
+                                <option value="CALMAXA">
+                                    Warner Marine CalxMax Part A Calcium
+                                </option>
+                                <option value="WMCC">
+                                    Warner Marine ReefPure Conc. Calcium
+                                </option>
+                                <option value="RF1C">
+                                    Randy's Recipe 1 Calcium Part
+                                </option>
+                                <option value="RF2C">
+                                    Randy's Recipe 2 Calcium Part
+                                </option>
+                                <option value="ACACL2">
+                                    Aq. Sys Reef Evolution CaCl2
+                                </option>
+                                <option value="CBALA">
+                                    Two Little Fishies C-Balance Part A
+                                </option>
+                                <option value="BICABUFP2">
+                                    ESV B-Ionic Original Ca Buff Pt 2
+                                </option>
+                                <option value="BICASYS2">
+                                    ESV B-Ionic Bicarbonate Syst Pt 2
+                                </option>
+                                <option value="ACACL2">
+                                    ESV Calcium Chloride
+                                </option>
+                                <option value="ACACL2">
+                                    Kent TurboCalcium
+                                </option>
+                                <option value="KLC">Kent Liquid Calcium</option>
+                                <option value="KTECHA">
+                                    Kent's Tech.CB Part A Calcium
+                                </option>
+                                <option value="OB1">
+                                    Oceans Blend Part 1 of 2 Part Supplement
+                                </option>
+                                <option value="RSCA">
+                                    Red Sea Foundation A Calcium+ (Liquid)
+                                </option>
+                                <option value="RSCAP">
+                                    Red Sea Foundation A Calcium+ (Powder)
+                                </option>
+                                <option value="SCRAC">
+                                    SeaChem Reef Adv Calcium (Dry)
+                                </option>
+                                <option value="SCRCOM">
+                                    SeaChem Reef Complete (liq)
+                                </option>
+                                <option value="SCRCA">
+                                    SeaChem Reef Calcium (liq)
+                                </option>
+                                <option value="SCRFUS">
+                                    SeaChem Fusion Part 1 Calcium (liq)
+                                </option>
+                                <option value="TMBC">
+                                    Tropic Marin Bio-Calcium Powder (also
+                                    Alkalinity)
+                                </option>
+                                <option value="SAOC">
+                                    Salifert All in One (also Alkalinity)
+                                </option>
+                                <option value="SCC">
+                                    Salifert Coral Calcium
+                                </option>
+                            </select>
+                            <span class="supplement-text"
+                                >Product Required:</span
+                            >
+                            <input
+                                name="ProdCaReq"
+                                type="text"
+                                id="ProdCaReq"
+                                class="fieldfont"
+                                size="42"
+                                maxlength="42"
+                                readonly="true"
+                            />
+                            <span class="supplement-text"
+                                >Balanced Alkalinity is:</span
+                            >
+                            <input
+                                name="BalAlk"
+                                type="text"
+                                id="BalAlk"
+                                class="fieldfont"
+                                size="25"
+                                maxlength="25"
+                                readonly="true"
+                            />
+                            <span class="supplement-text">Ca pH effect:</span>
+                            <input
+                                name="CaPhEffect"
+                                type="text"
+                                id="CaPhEffect"
+                                class="fieldfont"
+                                size="20"
+                            />
+                            <div class="supplement-warning-container">
+                                <span class="supplement-warning-text"
+                                    >Warnings and usage:</span
+                                >
+                                <textarea name="CaWarn" readonly></textarea>
+                            </div>
+                            <input
+                                name="Button"
+                                type="button"
+                                class="button-secondary"
+                                tabindex="6"
+                                onClick="DoCalc(this.form)"
+                                value="Calculate"
+                            />
+                        </section>
+
+                        <!--Alkalinity--->
+                        <section
+                            class="supplement-container"
+                            aria-label="Alkalinity Calculator"
+                        >
+                            <span class="supplement-title">Alkalinity</span>
+                            <div class="supplement-input">
+                                <span class="supplement-text"
+                                    >Current Alk:</span
+                                >
+                                <input
+                                    name="CurrAlk"
+                                    type="text"
+                                    id="CurrAlk"
+                                    class="fieldfont"
+                                    tabindex="7"
+                                    size="7"
+                                    maxlength="6"
+                                />
+                                <select
+                                    name="AlkType"
+                                    size="1"
+                                    class="selectfont"
+                                    id="AlkType"
+                                    tabindex="8"
+                                >
+                                    <option value="d" selected>dKh</option>
+                                    <option value="m">meq/lt</option>
+                                    <option value="p">ppm</option>
+                                </select>
+                            </div>
+                            <div class="supplement-input">
+                                <span class="supplement-text"
+                                    >Desired Alk:</span
+                                >
+                                <input
+                                    name="DesAlk"
+                                    type="text"
+                                    id="DesAlk"
+                                    class="fieldfont"
+                                    tabindex="9"
+                                    size="7"
+                                    maxlength="6"
+                                />
+                            </div>
+                            <span class="supplement-text">Product:</span>
+                            <select
+                                name="AlkProductList"
+                                size="1"
+                                class="selectfont"
+                                id="select2"
+                                tabindex="10"
+                                onChange="DoCalc(this.form)"
+                            >
+                                <option selected>Select a Product</option>
+                                <option value="BAKESODA">
+                                    Baking Soda (Not Baking Powder!)
+                                </option>
+                                <option value="WASHSODA">
+                                    Sodium Carbonate Anhyd. / (Baked B. Soda)
+                                </option>
+                                <option value="LW">
+                                    Limerwater (Saturated)
+                                </option>
+                                <option value="AFKHP">
+                                    Aquaforest KH Plus (liquid)
+                                </option>
+                                <option value="AFKH">
+                                    Aquaforest KH Buffer (Powder)
+                                </option>
+                                <option value="BALKL">
+                                    Brightwell Alkalin8.3 (Liquid)
+                                </option>
+                                <option value="BALKP">
+                                    Brightwell Alkalin8.3 (Powder)
+                                </option>
+                                <option value="BALRCB">
+                                    Brightwell ReefCode Part B Alkalinity
+                                    (Liquid)
+                                </option>
+                                <option value="BALRCBP">
+                                    Brightwell ReefCode Part B Alkalinity
+                                    (Powder)
+                                </option>
+                                <option value="BALN">
+                                    Brightwell Nano Code B (Alkalinity)
+                                </option>
+                                <option value="CRBKH">
+                                    Continuum Reef Basis KH Buffer (Liquid)
+                                </option>
+                                <option value="CRBKHP">
+                                    Contimum Reef Basis Borate Free KH Buffer
+                                    (Powder)
+                                </option>
+                                <option value="CRSB">
+                                    Continuum Reef Sculpture Part B Alkalinity
+                                </option>
+                                <option value="MEALK">
+                                    MEcoral Alkalinity Quart/Diluted
+                                    Gallon/Dissolved Powder
+                                </option>
+                                <option value="KTECHB">
+                                    Kent's Tech.CB Part B Alkalinity
+                                </option>
+                                <option value="CALMAXB">
+                                    Warner Marine CalxMax Part B Alkalinity
+                                </option>
+                                <option value="FBAKESODA">
+                                    Fritz ProAquatics Sodium Bicarbonate
+                                </option>
+                                <option value="FWASHSODA">
+                                    Fritz ProAquatics Sodium Carbonate
+                                </option>
+                                <option value="RF1A">
+                                    Randy's Recipe 1 Alkalinity Part
+                                </option>
+                                <option value="RF2A">
+                                    Randy's Recipe 2 Alkalinity Part
+                                </option>
+                                <option value="ASRESB">
+                                    Aq Systems Reef Evo SeaBuffer
+                                </option>
+                                <option value="CBALB">
+                                    Two Little Fishies C-Balance Part B
+                                </option>
+                                <option value="BICABUFP1">
+                                    ESV B-Ionic Original Ca Buff Pt 1
+                                </option>
+                                <option value="BICASYS1">
+                                    ESV B-Ionic Bicarbonate Syst Pt 1
+                                </option>
+                                <option value="OB2">
+                                    Oceans Blend Part 2 of 2 Part Supplement
+                                </option>
+                                <option value="RSKH">
+                                    Red Sea Foundation B KH/Alkalinity (Liquid)
+                                </option>
+                                <option value="RSKHP">
+                                    Red Sea Foundation B KH/Alkalinity (Powder)
+                                </option>
+                                <option value="SCRBUF">
+                                    SeaChem Reef Buffer (dry)
+                                </option>
+                                <option value="SCRBUI">
+                                    SeaChem Reef Builder (dry)
+                                </option>
+                                <option value="SCRCARB">
+                                    SeaChem Reef Carbonate (liq)
+                                </option>
+                                <option value="SCRFUS2">
+                                    SeaChem Fusion Part 2 Alkalinity (liq)
+                                </option>
+                                <option value="TMBCA">
+                                    Tropic Marin Bio-Calcium Powder (also
+                                    Calcium)
+                                </option>
+                                <option value="SAOA">
+                                    Salifert All in One (also Calcium)
+                                </option>
+                                <option value="SALB">
+                                    Salifert KH + PH Buffer (dry)
+                                </option>
+                            </select>
+                            <span class="supplement-text"
+                                >Product Required:</span
+                            >
+                            <input
+                                name="ProdAlkReq"
+                                type="text"
+                                id="ProdAlkReq"
+                                class="fieldfont"
+                                size="42"
+                                maxlength="42"
+                                readonly="true"
+                            />
+                            <span class="supplement-text"
+                                >Balanced Calcium is:</span
+                            >
+                            <input
+                                name="BalCa"
+                                type="text"
+                                id="BalCa"
+                                class="fieldfont"
+                                size="25"
+                                maxlength="25"
+                                readonly="true"
+                            />
+                            <span class="supplement-text">Alk pH effect:</span>
+                            <input
+                                name="AlkPhEffect"
+                                type="text"
+                                id="AlkPhEffect"
+                                class="fieldfont"
+                                size="20"
+                            />
+                            <div class="supplement-warning-container">
+                                <span class="supplement-warning-text"
+                                    >Warnings and usage:</span
+                                >
+                                <textarea name="AlkWarn" readonly></textarea>
+                            </div>
+                            <input
+                                name="Button"
+                                type="button"
+                                class="button-secondary"
+                                tabindex="6"
+                                onClick="DoCalc(this.form)"
+                                value="Calculate"
+                            />
+                        </section>
+
+                        <!--Magnesium--->
+                        <section
+                            class="supplement-container"
+                            aria-label="Magnesium Calculator"
+                        >
+                            <span class="supplement-title">Magnesium</span>
+                            <div class="supplement-input">
+                                <span class="supplement-text">Current Mg:</span>
+                                <input
+                                    name="CurrMag"
+                                    type="text"
+                                    id="CurrMag"
+                                    class="fieldfont"
+                                    tabindex="12"
+                                    size="7"
+                                    maxlength="5"
+                                />
+                                <span class="supplement-text">ppm</span>
+                            </div>
+                            <div class="supplement-input">
+                                <span class="supplement-text">Desired Mg:</span>
+                                <input
+                                    name="DesMag"
+                                    type="text"
+                                    id="DesMag"
+                                    class="fieldfont"
+                                    tabindex="13"
+                                    size="7"
+                                    maxlength="5"
+                                />
+                                <span class="supplement-text">ppm</span>
+                            </div>
+                            <span class="supplement-text">Product:</span>
+                            <select
+                                name="MagProductList"
+                                size="1"
+                                class="selectfont"
+                                id="select3"
+                                tabindex="14"
+                                onChange="DoCalc(this.form)"
+                            >
+                                <option selected>Select a Product</option>
+                                <option value="ES">
+                                    Epsom Salts (Magnesium Sulfate Heptahydrate)
+                                </option>
+                                <option value="MCH">
+                                    Magnesium Chloride Hexahydrate (MagFlake)
+                                </option>
+                                <option value="MCA">
+                                    Magnesium Chloride Anhydrous
+                                </option>
+                                <option value="AFMGP">
+                                    Aquaforest Mg Plus (liquid)
+                                </option>
+                                <option value="FMCH">
+                                    Aquaforest Magnesium (Powder)
+                                </option>
+                                <option value="BAML">
+                                    Brightwell Aquatics Magnesion (Liq)
+                                </option>
+                                <option value="BAMP">
+                                    Brightwell Aquatics Magnesion-P (Powder)
+                                </option>
+                                <option value="CRBM">
+                                    Continuum Reef Basis Magnesium (Liquid)
+                                </option>
+                                <option value="CRBMP">
+                                    Continuum Reef Basis Magnesium (Powder)
+                                </option>
+                                <option value="MEM">
+                                    MEcoral Magnesium Quart/Diluted
+                                    Gallon/Dissolved Powder
+                                </option>
+                                <option value="WMCMAG">
+                                    Warner Marine ReefPure Balanced Magnesium
+                                </option>
+                                <option value="RFM">
+                                    Randy's Recipes 1 and 2 versions A and B
+                                </option>
+                                <option value="KNTC">
+                                    Kent's Tech M (Liq) 18.4 ppm/ml/gal
+                                </option>
+                                <option value="FMCH">
+                                    Fritz ProAquatics Mag Flake
+                                </option>
+                                <option value="FES">
+                                    Fritz ProAquatics Mag Sulfate
+                                </option>
+                                <option value="ESVM">
+                                    ESV B-Ionic Magnesium (Liq)
+                                </option>
+                                <option value="OBM">
+                                    Oceans Blend Magnesium
+                                </option>
+                                <option value="RSM">
+                                    Red Sea Foundation C Magnesium (Liquid)
+                                </option>
+                                <option value="RSMP">
+                                    Red Sea Foundation C Magnesium (Powder)
+                                </option>
+                                <option value="TMBM">
+                                    Tropic Marin Bio-Magnesium (Dry)
+                                </option>
+                                <option value="SQRM">
+                                    SeaChem Reef Adv Magnesium (Dry)
+                                </option>
+                                <option value="SLM">
+                                    Salifert Liquid Magnesium
+                                </option>
+                                <option value="SMP">
+                                    Salifert Magnesium Powder (Dry)
+                                </option>
+                            </select>
+                            <span class="supplement-text"
+                                >Product Required:</span
+                            >
+                            <input
+                                name="ProdMagReq"
+                                type="text"
+                                id="ProdMagReq"
+                                class="fieldfont"
+                                size="42"
+                                maxlength="42"
+                                readonly="true"
+                            />
+                            <span class="supplement-text">Mg pH effect:</span>
+                            <input
+                                name="MagPhEffect"
+                                type="text"
+                                id="MagPhEffect"
+                                class="fieldfont"
+                                size="20"
+                            />
+                            <div class="supplement-warning-container">
+                                <span class="supplement-warning-text"
+                                    >Warnings and usage:</span
+                                >
+                                <textarea name="MagWarn" readonly></textarea>
+                            </div>
+                            <input
+                                name="Button"
+                                type="button"
+                                class="button-secondary"
+                                tabindex="6"
+                                onClick="DoCalc(this.form)"
+                                value="Calculate"
+                            />
+                        </section>
+                    </div>
+                </form>
+
+                <section>
+                    <span>WARNING:</span>
+                    <p>
+                        You should be very careful about the kinds of products
+                        or chemicals put into your aquarium. Many of these
+                        products require keen knowledge of how they interact
+                        with your aquarium and saltwater.
+                    </p>
+                    <p>
+                        All of the products presented should be used with full
+                        knowledge of their capabilities and limitations as many
+                        of these products may add more than just either Calcium,
+                        Alkalinity and/or Magnesium.
+                    </p>
+                    <p>
+                        If you don't know what a product does, don't use it.
+                        Consult your manufacturer. Given the variability of
+                        their granular size, products conversion between volume
+                        and weight are approximations; for safety, use less than
+                        the calculated amount and measure the effect before
+                        adding the rest. Although every effort has been made to
+                        obtain accurate results and recommendations we can not
+                        assume responsibility for any problem related to the use
+                        of this calculator.
+                    </p>
+                </section>
+
+                <section>
+                    <span>Aknowledgements</span>
+                    <p>
+                        We want to thank Dr. Randy Holmes-Farley for his
+                        articles and help with some of these calculations and
+                        also we thank the manufacturers for providing and
+                        allowing the use of their products and corresponding
+                        data. I welcome your comments, questions and
+                        suggestions, please feel free to drop me an email any
+                        time
+                        <a href="mailto:jdreefer@diesyst.com">jdieck</a>
+                    </p>
+                    <p>
+                        All products and their brand name are copyright of their
+                        respective owners. Although links to this page are
+                        allowed, this calculator is only intended to provide
+                        information in support of marine aquarists and can not
+                        be used for commercial purposes Neither this page nor
+                        it's source code or contained data either partially or
+                        entirely can be used in any other site commercial or
+                        otherwise. For more specific and detailed information in
+                        the use of a product, consult your manufacturer.
+                    </p>
+                </section>
+
+                <footer>
+                    <section>
+                        <span>UPDATES: </span>
+                        <ul>
+                            <li>
+                                <span
+                                    >30/07/19 v 0.49 ---- Updated concentrations
+                                    for Aquaforest liquid alk and Mg and
+                                    Continuum Mg Powder.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >23/10/18 v 0.48 ---- Added Red Sea
+                                    Products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >22/10/18 v 0.47 ---- Added Continuum
+                                    Products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >17/10/18 v 0.46 ---- Added Brightwell
+                                    Aquatics products. Updated ESV BIonic Part
+                                    1.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >01/09/18 v 0.46 ---- Added MGcoral
+                                    Products. Added Aquaforest Products</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >12/20/15 v 0.45 ---- Updated e-mail
+                                    link.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >10/27/12 v 0.44 ---- Added Fritz
+                                    ProAquatics Products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >06/09/10 v 0.43 ---- Added Seachem
+                                    Fusion.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >05/31/10 v 0.42 ---- Expanded warning for
+                                    dry products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >12/18/07 v 0.41 ---- Transferred to
+                                    diesyst.com.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >02/03/07 v 0.40 ---- Added Salifert's All
+                                    in One.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >01/16/07 v 0.39 ---- Updated Calc for B.
+                                    Soda and BB SOda.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >12/26/06 v 0.38 ---- Added Salifert
+                                    Products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >07/26/06 v 0.37 ---- Added Kent's Tech.CB
+                                    Parts A&B Calcium and Buffer System.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >07/05/06 v 0.36 ---- updated OB calcium
+                                    concentration.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >06/05/06 v 0.35 ---- Added Warner Marine
+                                    Products.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >05/17/06 v 0.34 ---- Added ESV Bicarbonate
+                                    System.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >03/15/06 v 0.33 ---- Added Tropic Marin
+                                    Bio-Calcium.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >02/18/06 v 0.32 ---- Added additional UOM
+                                    and updated Randy's Mg notes.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >09/23/05 v 0.31 ---- Added MV Calcium
+                                    Chloride.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >08/06/05 v 0.30 ---- Added Calcium Chloride
+                                    Dihydrate.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >03/23/05 v 0.29 ---- Added Magnesium
+                                    Chloride Hexaydrate and Anhydrous.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >03/11/05 v 0.28 ---- Added Link to Volume
+                                    Calculator Page.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >01/27/05 v 0.26 ---- Added Randy's Recipes
+                                    1 and 2 for Ca / Alk / Mg Suppl.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >01/13/05 v 0.25 ---- Added Oceans Encounter
+                                    Two Part and Mg Suppl.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >12/02/04 v 0.24 ---- Added Two Little
+                                    Fishies C-Balance Parts A and B</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >11/27/04 v 0.23 ---- Added Kent's Liquid
+                                    Calcium; updated warning</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >10/30/04 v 0.22 ---- Added Mg Calculator;
+                                    ppm option to alkalinity. Revised
+                                    look.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >03/13/03 v 0.21 ---- Added some warnings
+                                    and usage comments.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >02/13/03 v 0.20 ---- Added kalkwasser pH
+                                    effects and warnings.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >11/26/02 v 0.17 ---- Added Aquarium Systems
+                                    Reef Evolution Cal, Ev SeaBuffer.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >11/22/02 v 0.16 ---- Added Bionic, CaCl2,
+                                    Washing Soda, liters, dKH.</span
+                                >
+                            </li>
+                            <li>
+                                <span
+                                    >11/22/02 v 0.15 ---- Added SeaChem Reef
+                                    liquid products. Revised look.</span
+                                >
+                            </li>
+                        </ul>
+                    </section>
+                    <span>&copy;By: JDieck</span>
+                    <span
+                        >Thanks to M.G. Kademani for providing the basis for
+                        this calculator</span
+                    >
+                    <span
+                        >Version 0.49 &copy; Best Viewed at 1024 x 768 or higher
+                        resolution</span
+                    >
+                </footer>
+            </section>
+        </div>
+        <script type="text/JavaScript" src="/js/app.js"></script>
+        <script type="text/JavaScript" src="/js/supcalc.js"></script>
+    </body>
+</html>
