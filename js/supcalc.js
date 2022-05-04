@@ -1,39 +1,7 @@
-function MM_reloadPage(init) {
-    //reloads the window if Nav4 resized
-    if (init == true)
-        with (navigator) {
-            if (appName == 'Netscape' && parseInt(appVersion) == 4) {
-                document.MM_pgW = innerWidth;
-                document.MM_pgH = innerHeight;
-                onresize = MM_reloadPage;
-            }
-        }
-    else if (innerWidth != document.MM_pgW || innerHeight != document.MM_pgH)
-        location.reload();
-}
-MM_reloadPage(true);
-function MM_callJS(jsStr) {
-    //v2.0
-    return eval(jsStr);
-}
-function MM_findObj(n, d) {
-    //v4.01
-    var p, i, x;
-    if (!d) d = document;
-    if ((p = n.indexOf('?')) > 0 && parent.frames.length) {
-        d = parent.frames[n.substring(p + 1)].document;
-        n = n.substring(0, p);
-    }
-    if (!(x = d[n]) && d.all) x = d.all[n];
-    for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
-    for (i = 0; !x && d.layers && i < d.layers.length; i++)
-        x = MM_findObj(n, d.layers[i].document);
-    if (!x && d.getElementById) x = d.getElementById(n);
-    return x;
-}
-function MM_validateForm() {
+// form validation
+function validateForm() {
     //v4.0
-    var i,
+    let i,
         p,
         q,
         nm,
@@ -42,7 +10,7 @@ function MM_validateForm() {
         min,
         max,
         errors = '',
-        args = MM_validateForm.arguments;
+        args = validateForm.arguments;
     for (i = 0; i < args.length - 2; i += 3) {
         test = args[i + 2];
         val = MM_findObj(args[i]);
@@ -81,43 +49,43 @@ function MM_validateForm() {
     document.MM_returnValue = errors == '';
 }
 
-// Calculator portion of the code 
+// Calculator portion of the code
 function DoCalc(form) {
-    var volume = parseFloat(document.ChemForm.Volume.value);
-    var voltype =
+    let volume = parseFloat(document.ChemForm.Volume.value);
+    let volType =
         document.ChemForm.VolumeType.options[
             document.ChemForm.VolumeType.selectedIndex
         ].value;
-    var CurrCa = parseFloat(document.ChemForm.CurrCa.value);
-    var CurrAlk = parseFloat(document.ChemForm.CurrAlk.value);
-    var CurrMag = parseInt(document.ChemForm.CurrMag.value);
-    var DesCa = parseFloat(document.ChemForm.DesCa.value);
-    var DesAlk = parseFloat(document.ChemForm.DesAlk.value);
-    var DesMag = parseInt(document.ChemForm.DesMag.value);
-    var alktype =
+    let CurrCa = parseFloat(document.ChemForm.CurrCa.value);
+    let CurrAlk = parseFloat(document.ChemForm.CurrAlk.value);
+    let CurrMag = parseInt(document.ChemForm.CurrMag.value);
+    let DesCa = parseFloat(document.ChemForm.DesCa.value);
+    let DesAlk = parseFloat(document.ChemForm.DesAlk.value);
+    let DesMag = parseInt(document.ChemForm.DesMag.value);
+    let alktype =
         document.ChemForm.AlkType.options[
             document.ChemForm.AlkType.selectedIndex
         ].value;
-    var ProdCa =
-        document.ChemForm.ProdCaList.options[
-            document.ChemForm.ProdCaList.selectedIndex
+    let ProdCa =
+        document.ChemForm.CaProductList.options[
+            document.ChemForm.CaProductList.selectedIndex
         ].value;
-    var ProdAlk =
-        document.ChemForm.ProdAlkList.options[
-            document.ChemForm.ProdAlkList.selectedIndex
+    let ProdAlk =
+        document.ChemForm.AlkProductList.options[
+            document.ChemForm.AlkProductList.selectedIndex
         ].value;
-    var ProdMag =
-        document.ChemForm.ProdMagList.options[
-            document.ChemForm.ProdMagList.selectedIndex
+    let ProdMag =
+        document.ChemForm.MagProductList.options[
+            document.ChemForm.MagProductList.selectedIndex
         ].value;
-    var xxresult = 0;
-    var resultstring = '';
-    var cCawarn = '';
-    var cCapheffect = '';
-    var cAlkpheffect = '';
-    var cAlkwarn = '';
-    var cMagwarn = '';
-    var cMagpheffect = '';
+    let xxresult = 0;
+    let resultstring = '';
+    let cCawarn = '';
+    let cCapheffect = '';
+    let cAlkpheffect = '';
+    let cAlkwarn = '';
+    let cMagwarn = '';
+    let cMagpheffect = '';
     document.ChemForm.ProdCaReq.value = '';
     document.ChemForm.ProdAlkReq.value = '';
     document.ChemForm.ProdMagReq.value = '';
@@ -127,7 +95,7 @@ function DoCalc(form) {
     document.ChemForm.CaWarn.value = '';
     document.ChemForm.AlkWarn.value = '';
     document.ChemForm.MagWarn.value = '';
-    if (voltype == 'l') {
+    if (volType == 'l') {
         volume = volume / 3.7854; // convert to gallons
     }
     if (CurrCa > 0) {
