@@ -1,5 +1,4 @@
 function MM_findObj(n, d) {
-    //v4.01
     var p, i, x;
     if (!d) d = document;
     if ((p = n.indexOf('?')) > 0 && parent.frames.length) {
@@ -13,9 +12,8 @@ function MM_findObj(n, d) {
     if (!x && d.getElementById) x = d.getElementById(n);
     return x;
 }
-// form validation
+
 function validateForm() {
-    //v4.0
     let i,
         p,
         q,
@@ -63,11 +61,15 @@ function validateForm() {
     if (errors) alert('The following error(s) occurred:\n' + errors);
     document.MM_returnValue = errors == '';
 }
-
-document.getElementsByName('Button').onclick(DoCalc);
+// listen for click on calculate btn's
+const calculateBtn = document.querySelectorAll('.btn');
+calculateBtn.forEach(function (calcBtn) {
+    calcBtn.addEventListener('click', calcSupplement);
+});
 
 // Calculator portion of the code
-function DoCalc() {
+function calcSupplement() {
+    console.log('calculation in progress');
     let volume = parseFloat(document.ChemForm.Volume.value);
     let volType =
         document.ChemForm.VolumeType.options[
@@ -132,7 +134,7 @@ function DoCalc() {
                     'Limewater is not the preferred method to increase Calcium as it will also increase Alkalinity.  It shall be used to maintain levels to match your daily consumption if that is what you entered in your data. Do not dose all at once.  This should be slowly dripped into your aquarium as freshwater topoff.  It is likely that you will need to dose with another additive to make large corrections. Saturated limewater is the clear liquid from mixing 2 tsp kalkwasser(pickling lime) per gallon.';
                 break;
             case 'BCAL':
-                // Brightwell Aquatics Calcion 1 ml adds 40 ppm/gal
+                // Brightwell Aquatics Calcium 1 ml adds 40 ppm/gal
                 result = (10 / 40) * (DesCa - CurrCa) * volume;
                 resultstring =
                     parseInt(result) / 10 +
