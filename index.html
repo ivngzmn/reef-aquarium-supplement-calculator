@@ -55,7 +55,7 @@
             <section class="hero">
                 <h1 class="hero-title">Reef Supplements Calculator</h1>
                 <p class="hero-text">
-                    This page is designed to calculate reef aquarium supplements
+                    This page is designed to calculate reef aquarium supplement
                     additions for Calcium, Alkalinity or Magnesium using
                     commercial products or standard chemicals.
                 </p>
@@ -96,7 +96,9 @@
                         >
                             <span class="supplement-title">Calcium</span>
                             <div class="supplement-input">
-                                <span class="supplement-text">Current Ca:</span>
+                                <span class="supplement-text"
+                                    >Current Calcium Level:</span
+                                >
                                 <input
                                     name="CurrCa"
                                     type="text"
@@ -109,7 +111,9 @@
                                 <span class="supplement-text">ppm</span>
                             </div>
                             <div class="supplement-input">
-                                <span class="supplement-text">Desired Ca:</span>
+                                <span class="supplement-text"
+                                    >Desired Calcium Level:</span
+                                >
                                 <input
                                     name="DesCa"
                                     type="text"
@@ -159,7 +163,7 @@
                                     Brightwell ReefCode Part A Calcium (Powder)
                                 </option>
                                 <option value="BCAN">
-                                    Brightwell Nano Code A (Calcium)
+                                    Brightwell NanoCode A Calcium (Liquid)
                                 </option>
                                 <option value="CRBCA">
                                     Continuum Reef Basis Calcium (Liquid)
@@ -196,13 +200,14 @@
                                     Two Little Fishies C-Balance Part A
                                 </option>
                                 <option value="BICABUFP2">
-                                    ESV B-Ionic Original Ca Buff Pt 2
+                                    ESV B-Ionic Calcium Buffer System Component
+                                    No. 2 (liquid)
                                 </option>
-                                <option value="BICASYS2">
+                                <!-- <option value="BICASYS2">
                                     ESV B-Ionic Bicarbonate Syst Pt 2
-                                </option>
+                                </option> -->
                                 <option value="ACACL2">
-                                    ESV Calcium Chloride
+                                    ESV Calcium Chloride (Powder)
                                 </option>
                                 <option value="ACACL2">
                                     Kent TurboCalcium
@@ -246,7 +251,8 @@
                             <span class="supplement-text"
                                 >Product Required:</span
                             >
-                            <input
+                            <p class="caProdReq"></p>
+                            <!-- <input
                                 name="ProdCaReq"
                                 type="text"
                                 id="ProdCaReq"
@@ -254,11 +260,12 @@
                                 size="42"
                                 maxlength="42"
                                 readonly="true"
-                            />
+                            /> -->
                             <span class="supplement-text"
                                 >Balanced Alkalinity is:</span
                             >
-                            <input
+                            <p class="balAlk"></p>
+                            <!-- <input
                                 name="BalAlk"
                                 type="text"
                                 id="BalAlk"
@@ -266,20 +273,25 @@
                                 size="25"
                                 maxlength="25"
                                 readonly="true"
-                            />
-                            <span class="supplement-text">Ca pH effect:</span>
-                            <input
+                            /> -->
+                            <span class="supplement-text"
+                                >Calcium pH effect:</span
+                            >
+                            <p class="caEffectPH"></p>
+                            <!-- <input
                                 name="CaPhEffect"
                                 type="text"
                                 id="CaPhEffect"
                                 class="fieldfont"
                                 size="20"
-                            />
+                            /> -->
                             <div class="supplement-warning-container">
                                 <span class="supplement-warning-text"
                                     >Warnings and usage:</span
                                 >
-                                <textarea name="CaWarn" readonly></textarea>
+
+                                <p class="CaWarning"></p>
+                                <!-- <textarea name="CaWarn" readonly></textarea> -->
                             </div>
                             <input
                                 name="Button"
@@ -314,7 +326,7 @@
                             </div>
                             <div class="supplement-input">
                                 <span class="supplement-text"
-                                    >Current Alk:</span
+                                    >Current Alkalinity Level:</span
                                 >
                                 <input
                                     name="CurrAlk"
@@ -328,7 +340,7 @@
                             </div>
                             <div class="supplement-input">
                                 <span class="supplement-text"
-                                    >Desired Alk:</span
+                                    >Desired Alkalinity Level:</span
                                 >
                                 <input
                                     name="DesAlk"
@@ -380,7 +392,7 @@
                                     (Powder)
                                 </option>
                                 <option value="BALN">
-                                    Brightwell Nano Code B (Alkalinity)
+                                    Brightwell NanoCode B Alkalinity (Liquid)
                                 </option>
                                 <option value="CRBKH">
                                     Continuum Reef Basis KH Buffer (Liquid)
@@ -421,11 +433,12 @@
                                     Two Little Fishies C-Balance Part B
                                 </option>
                                 <option value="BICABUFP1">
-                                    ESV B-Ionic Original Ca Buff Pt 1
+                                    ESV B-Ionic Calcium Buffer Component No.1
+                                    (Liquid)
                                 </option>
-                                <option value="BICASYS1">
+                                <!-- <option value="BICASYS1">
                                     ESV B-Ionic Bicarbonate Syst Pt 1
-                                </option>
+                                </option> -->
                                 <option value="OB2">
                                     Oceans Blend Part 2 of 2 Part Supplement
                                 </option>
@@ -436,16 +449,16 @@
                                     Red Sea Foundation B KH/Alkalinity (Powder)
                                 </option>
                                 <option value="SCRBUF">
-                                    SeaChem Reef Buffer (dry)
+                                    SeaChem Reef Buffer (Powder)
                                 </option>
                                 <option value="SCRBUI">
-                                    SeaChem Reef Builder (dry)
+                                    SeaChem Reef Builder (Powder)
                                 </option>
                                 <option value="SCRCARB">
-                                    SeaChem Reef Carbonate (liq)
+                                    SeaChem Reef Carbonate (Liquid)
                                 </option>
                                 <option value="SCRFUS2">
-                                    SeaChem Fusion Part 2 Alkalinity (liq)
+                                    SeaChem Fusion Part 2 Alkalinity (Liquid)
                                 </option>
                                 <option value="TMBCA">
                                     Tropic Marin Bio-Calcium Powder (also
@@ -455,13 +468,14 @@
                                     Salifert All in One (also Calcium)
                                 </option>
                                 <option value="SALB">
-                                    Salifert KH + PH Buffer (dry)
+                                    Salifert KH + PH Buffer (Powder)
                                 </option>
                             </select>
                             <span class="supplement-text"
                                 >Product Required:</span
                             >
-                            <input
+                            <p class="alkProdReq"></p>
+                            <!-- <input
                                 name="ProdAlkReq"
                                 type="text"
                                 id="ProdAlkReq"
@@ -469,11 +483,12 @@
                                 size="42"
                                 maxlength="42"
                                 readonly="true"
-                            />
+                            /> -->
                             <span class="supplement-text"
                                 >Balanced Calcium is:</span
                             >
-                            <input
+                            <p class="balCal"></p>
+                            <!-- <input
                                 name="BalCa"
                                 type="text"
                                 id="BalCa"
@@ -481,20 +496,24 @@
                                 size="25"
                                 maxlength="25"
                                 readonly="true"
-                            />
-                            <span class="supplement-text">Alk pH effect:</span>
-                            <input
+                            /> -->
+                            <span class="supplement-text"
+                                >Alkalinity pH effect:</span
+                            >
+                            <p class="alkEffectPH"></p>
+                            <!-- <input
                                 name="AlkPhEffect"
                                 type="text"
                                 id="AlkPhEffect"
                                 class="fieldfont"
                                 size="20"
-                            />
+                            /> -->
                             <div class="supplement-warning-container">
                                 <span class="supplement-warning-text"
                                     >Warnings and usage:</span
                                 >
-                                <textarea name="AlkWarn" readonly></textarea>
+                                <p class="alkWarning"></p>
+                                <!-- <textarea name="AlkWarn" readonly></textarea> -->
                             </div>
                             <input
                                 name="Button"
@@ -512,7 +531,9 @@
                         >
                             <span class="supplement-title">Magnesium</span>
                             <div class="supplement-input">
-                                <span class="supplement-text">Current Mg:</span>
+                                <span class="supplement-text"
+                                    >Current Magnesium Level:</span
+                                >
                                 <input
                                     name="CurrMag"
                                     type="text"
@@ -525,7 +546,9 @@
                                 <span class="supplement-text">ppm</span>
                             </div>
                             <div class="supplement-input">
-                                <span class="supplement-text">Desired Mg:</span>
+                                <span class="supplement-text"
+                                    >Desired Magnesium Level:</span
+                                >
                                 <input
                                     name="DesMag"
                                     type="text"
@@ -594,7 +617,7 @@
                                     Fritz ProAquatics Mag Sulfate
                                 </option>
                                 <option value="ESVM">
-                                    ESV B-Ionic Magnesium (Liq)
+                                    ESV B-Ionic Magnesium (Liquid)
                                 </option>
                                 <option value="OBM">
                                     Oceans Blend Magnesium
@@ -621,7 +644,8 @@
                             <span class="supplement-text"
                                 >Product Required:</span
                             >
-                            <input
+                            <p class="magProdReq"></p>
+                            <!-- <input
                                 name="ProdMagReq"
                                 type="text"
                                 id="ProdMagReq"
@@ -629,20 +653,24 @@
                                 size="42"
                                 maxlength="42"
                                 readonly="true"
-                            />
-                            <span class="supplement-text">Mg pH effect:</span>
-                            <input
+                            /> -->
+                            <span class="supplement-text"
+                                >Magnesion pH effect:</span
+                            >
+                            <p class="magPhEffect"></p>
+                            <!-- <input
                                 name="MagPhEffect"
                                 type="text"
                                 id="MagPhEffect"
                                 class="fieldfont"
                                 size="20"
-                            />
+                            /> -->
                             <div class="supplement-warning-container">
                                 <span class="supplement-warning-text"
                                     >Warnings and usage:</span
                                 >
-                                <textarea name="MagWarn" readonly></textarea>
+                                <p class="magWarning"></p>
+                                <!-- <textarea name="MagWarn" readonly></textarea> -->
                             </div>
                             <input
                                 name="Button"
@@ -926,7 +954,7 @@
                 </footer>
             </section>
         </div>
-        <script type="text/JavaScript" src="/js/app.js"></script>
+        <!-- <script type="text/JavaScript" src="/js/app.js"></script> -->
         <script type="text/JavaScript" src="/js/supcalc.js"></script>
     </body>
 </html>
