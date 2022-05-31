@@ -70,7 +70,8 @@
                         >
                         <input
                             name="Volume"
-                            type="text"
+                            type="number"
+                            min="0"
                             class="volume-input"
                             id="Volume"
                             tabindex="1"
@@ -101,12 +102,14 @@
                                 >
                                 <input
                                     name="CurrCa"
-                                    type="text"
+                                    type="number"
                                     id="CurrCa"
                                     class="fieldfont"
                                     tabindex="3"
                                     size="7"
                                     maxlength="6"
+                                    min="0"
+                                    max="450"
                                 />
                                 <span class="supplement-text">ppm</span>
                             </div>
@@ -116,12 +119,14 @@
                                 >
                                 <input
                                     name="DesCa"
-                                    type="text"
+                                    type="number"
                                     id="DesCa"
                                     class="fieldfont"
                                     tabindex="4"
                                     size="7"
                                     maxlength="6"
+                                    min="380"
+                                    max="450"
                                 />
                                 <span class="supplement-text">ppm</span>
                             </div>
@@ -330,12 +335,14 @@
                                 >
                                 <input
                                     name="CurrAlk"
-                                    type="text"
+                                    type="number"
                                     id="CurrAlk"
                                     class="fieldfont"
                                     tabindex="7"
                                     size="7"
                                     maxlength="6"
+                                    min="0"
+                                    max="12"
                                 />
                             </div>
                             <div class="supplement-input">
@@ -344,12 +351,14 @@
                                 >
                                 <input
                                     name="DesAlk"
-                                    type="text"
+                                    type="number"
                                     id="DesAlk"
                                     class="fieldfont"
                                     tabindex="9"
                                     size="7"
                                     maxlength="6"
+                                    min="7"
+                                    max="12"
                                 />
                             </div>
                             <span class="supplement-text">Product:</span>
@@ -536,12 +545,14 @@
                                 >
                                 <input
                                     name="CurrMag"
-                                    type="text"
+                                    type="number"
                                     id="CurrMag"
                                     class="fieldfont"
                                     tabindex="12"
                                     size="7"
                                     maxlength="5"
+                                    min="0"
+                                    max="1350"
                                 />
                                 <span class="supplement-text">ppm</span>
                             </div>
@@ -551,12 +562,14 @@
                                 >
                                 <input
                                     name="DesMag"
-                                    type="text"
+                                    type="number"
                                     id="DesMag"
                                     class="fieldfont"
                                     tabindex="13"
                                     size="7"
                                     maxlength="5"
+                                    min="1250"
+                                    max="1350"
                                 />
                                 <span class="supplement-text">ppm</span>
                             </div>
