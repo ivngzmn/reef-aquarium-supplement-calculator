@@ -619,28 +619,22 @@ function calcSupplement() {
                 break;
         } // end switch
         if (result > 0) {
+            // Calcium product required
             document.querySelector('.caProdReq').innerText = resultstring;
-            // document.ChemForm.ProdCaReq.value = resultstring;
-            // calc the balanced alk
+            // Calcium balanced Alkalinity
             let balAlk = `${
                 parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100
             } meq/l at ${DesCa} ppm`;
             document.querySelector('.balAlk').innerText = balAlk;
-
-            // document.ChemForm.BalAlk.value =
-            //     parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100 +
-            //     ' meq/l at ' +
-            //     DesCa +
-            //     ' ppm';
+            // Calcium pH effect
             document.querySelector('.caEffectPH').innerText = cCapheffect;
-            // document.ChemForm.CaPhEffect.value = cCapheffect;
+            // Calcium Warnings and Usage
             document.querySelector('.CaWarning').innerText = cCawarn;
-            // document.ChemForm.CaWarn.value = cCawarn;
-            if (DesAlk == 0) {
-                document.ChemForm.DesAlk.value =
-                    parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100;
-            }
-        } // end if
+        } else if (DesCa <= CurrCa) {
+            // return error if desired calcium is less than or equal to current calcium
+            let cCawarn = 'No supplementation required at this time.';
+            document.querySelector('.CaWarning').innerText = cCawarn;
+        } //end if
     } // CaProd
 
     // Alk product
@@ -666,7 +660,7 @@ function calcSupplement() {
                     ' fl oz';
                 cAlkpheffect = 'Substantially higher!';
                 cAlkwarn =
-                    'Limewater is not the preferred method to increase Alkalinity as it will also increase Calcium.  It shall be used to maintain levels to match your daily consumption if that is what you entered in your data. Do not dose all at once.  This should be slowly dripped into your aquarium as freshwater topoff.  It is likely that you will need to dose with another additive to make large corrections. Saturated limewater is the clear liquid from mixing 2 tsp kalkwasser(pickling lime) per gallon.';
+                    'Limewater is not the preferred method to increase Alkalinity as it will also increase Calcium.  It shall be used to maintain levels to match your daily consumption if that is what you entered in your data. Do not dose all at once.  This should be slowly dripped into your aquarium as freshwater top off.  It is likely that you will need to dose with another additive to make large corrections. Saturated limewater is the clear liquid from mixing 2 tsp kalkwasser(pickling lime) per gallon.';
                 break;
             case 'BAKESODA':
                 // baking Soda
@@ -993,7 +987,7 @@ function calcSupplement() {
                     ' tsp';
                 cAlkpheffect = 'Substantially Higher!';
                 cAlkwarn =
-                    'Do not dose all at once.  This should be slowly dosed into your aquarium.  Monitor pH while dosing.  Do not allow immediate impact of pH to be more than +/-0.20.';
+                    'Do not dose all at once.  This should be slowly dosed into your aquarium.  Monitor pH while dosing.  Do not allow immediate impact of pH to be more than +/-0.20. Note: 1 ml of product per gallon of aquarium water will raise alkalinity by 0.74 meq/liter (2.07 dKH)';
                 break;
             case 'BICASYS1':
                 // B-Ionic Bicarbonate System Part 1 - Alk
@@ -1186,23 +1180,28 @@ function calcSupplement() {
                 resultstring = '';
         }
         if (result > 0) {
-            // calc the balanced Calcium
-            document.ChemForm.BalCa.value =
-                parseInt((9 + DesAlk / 2) * 40.08) +
-                ' ppm at ' +
-                parseInt(100 * DesAlk) / 100 +
-                ' meq/l';
-            document.ChemForm.ProdAlkReq.value = resultstring;
-            document.ChemForm.AlkPhEffect.value = cAlkpheffect;
-            document.ChemForm.AlkWarn.value = cAlkwarn;
-            if (DesCa == 0) {
-                document.ChemForm.DesCa.value = parseInt(
-                    (9 + DesAlk / 2) * 40.08
-                );
-            }
+            // Alkalinity product required
+            document.querySelector('.alkProdReq').innerText = resultstring;
+            // calculate the balanced Calcium
+            let balCal = `${parseInt((9 + DesAlk / 2) * 40.08)} ppm at ${
+                parseInt(100 * DesAlk) / 100
+            } meq/l`;
+            // Balanced Calcium level
+            document.querySelector('.balCal').innerText = balCal;
+            // document.ChemForm.BalCa.value = +' ppm at ' + +' meq/l';
+            // Calcium pH effct
+            document.querySelector('.alkEffectPH').innerText = cAlkpheffect;
+            // document.ChemForm.AlkPhEffect.value = cAlkpheffect;
+            // Calcium warnings and usage
+            document.querySelector('.alkWarning').innerText = cAlkwarn;
+            // document.ChemForm.ProdAlkReq.value = resultstring;
+        } else if (DesAlk <= CurrAlk) {
+            // no action needed if desired alk and curr are less than or equal
+            let cAlkwarn = 'No supplimentation required at this time.';
+            document.querySelector('.alkWarning').innerText = cAlkwarn;
         }
     } // AlkPord
-    resultstring = '';
+
     if (CurrMag > 0) {
         switch (ProdMag) {
             case 'ES':
@@ -1519,14 +1518,36 @@ function calcSupplement() {
                 break;
         } // end switch
         if (result > 0) {
-            document.ChemForm.ProdMagReq.value = resultstring;
-            document.ChemForm.MagPhEffect.value = cMagpheffect;
+            // TODO: use example
+            // Calcium product required
+            // document.querySelector('.caProdReq').innerText = resultstring;
+            // Calcium balanced Alkalinity
+            // let balAlk = `${
+            //     parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100
+            // } meq/l at ${DesCa} ppm`;
+            // document.querySelector('.balAlk').innerText = balAlk;
+            // Calcium pH effect
+            // document.querySelector('.caEffectPH').innerText = cCapheffect;
+            // Calcium Warnings and Usage
+            // document.querySelector('.CaWarning').innerText = cCawarn;
+            // end use example
+
+            // Magnesium product required
+            document.querySelector('.magProdReq').innerText = resultstring;
+            // document.ChemForm.ProdMagReq.value = resultstring;
+            // Magnesium pH effect
+            document.querySelector('.magPhEffect').innerText = cMagpheffect;
+            // document.ChemForm.MagPhEffect.value = cMagpheffect;
+            // Magnesium Warnings and usage
+            document.querySelector('.magWarning').innerText = cMagwarn;
             document.ChemForm.MagWarn.value = cMagwarn;
             if (DesMag == 0) {
                 document.ChemForm.DesMag.value =
                     parseInt(DesMag / 3) + ' ppm Ca at ' + DesMag + ' ppm Mg';
             }
+        } else if (DesMag <= CurrMag) {
+            let cMagwarn = 'No supplimentation required at this time.';
+            document.querySelector('.magWarning').innerText = cMagwarn;
         } // end if
     } // MgProd
-    return 0;
 }
