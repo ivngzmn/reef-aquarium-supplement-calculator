@@ -61,15 +61,15 @@ function validateForm() {
     if (errors) alert('The following error(s) occurred:\n' + errors);
     document.MM_returnValue = errors == '';
 }
-// listen for click on calculate btn's
+
+// listen for click on calculate button's help from https://stackoverflow.com/questions/49680484/how-to-add-one-event-listener-for-all-buttons
 const calculateBtn = document.querySelectorAll('.btn');
 calculateBtn.forEach(function (calcBtn) {
     calcBtn.addEventListener('click', calcSupplement);
 });
 
-// Calculator portion of the code
+// Calculator portion
 function calcSupplement() {
-    console.log('calculation in progress');
     let volume = parseFloat(document.ChemForm.Volume.value);
     let volType =
         document.ChemForm.VolumeType.options[
@@ -97,27 +97,31 @@ function calcSupplement() {
         document.ChemForm.MagProductList.options[
             document.ChemForm.MagProductList.selectedIndex
         ].value;
+
+    // TODO: is this needed?
     // let xxresult = 0;
-    let resultstring = '';
-    let cCawarn = '';
-    let cCapheffect = '';
-    let cAlkpheffect = '';
-    let cAlkwarn = '';
-    let cMagwarn = '';
-    let cMagpheffect = '';
-    document.ChemForm.ProdCaReq.value = '';
-    document.ChemForm.ProdAlkReq.value = '';
-    document.ChemForm.ProdMagReq.value = '';
-    document.ChemForm.CaPhEffect.value = '';
-    document.ChemForm.AlkPhEffect.value = '';
-    document.ChemForm.MagPhEffect.value = '';
-    document.ChemForm.CaWarn.value = '';
-    document.ChemForm.AlkWarn.value = '';
-    document.ChemForm.MagWarn.value = '';
+    // let resultstring = '';
+    // let cCawarn = '';
+    // let cCapheffect = '';
+    // let cAlkpheffect = '';
+    // let cAlkwarn = '';
+    // let cMagwarn = '';
+    // let cMagpheffect = '';
+    // document.ChemForm.ProdCaReq.value = '';
+    // document.ChemForm.ProdAlkReq.value = '';
+    // document.ChemForm.ProdMagReq.value = '';
+    // document.ChemForm.CaPhEffect.value = '';
+    // document.ChemForm.AlkPhEffect.value = '';
+    // document.ChemForm.MagPhEffect.value = '';
+    // document.ChemForm.CaWarn.value = '';
+    // document.ChemForm.AlkWarn.value = '';
+    // document.ChemForm.MagWarn.value = '';
     if (volType == 'l') {
         volume = volume / 3.7854; // convert to gallons
     }
+    // Cal product
     if (CurrCa > 0) {
+        // start switch
         switch (ProdCa) {
             case 'LW':
                 // saturated limewater
@@ -615,22 +619,31 @@ function calcSupplement() {
                 break;
         } // end switch
         if (result > 0) {
-            document.ChemForm.ProdCaReq.value = resultstring;
+            document.querySelector('.caProdReq').innerText = resultstring;
+            // document.ChemForm.ProdCaReq.value = resultstring;
             // calc the balanced alk
-            document.ChemForm.BalAlk.value =
-                parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100 +
-                ' meq/l at ' +
-                DesCa +
-                ' ppm';
-            document.ChemForm.CaPhEffect.value = cCapheffect;
-            document.ChemForm.CaWarn.value = cCawarn;
+            let balAlk = `${
+                parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100
+            } meq/l at ${DesCa} ppm`;
+            document.querySelector('.balAlk').innerText = balAlk;
+
+            // document.ChemForm.BalAlk.value =
+            //     parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100 +
+            //     ' meq/l at ' +
+            //     DesCa +
+            //     ' ppm';
+            document.querySelector('.caEffectPH').innerText = cCapheffect;
+            // document.ChemForm.CaPhEffect.value = cCapheffect;
+            document.querySelector('.CaWarning').innerText = cCawarn;
+            // document.ChemForm.CaWarn.value = cCawarn;
             if (DesAlk == 0) {
                 document.ChemForm.DesAlk.value =
                     parseInt(100 * ((DesCa / 40.08 - 9) * 2)) / 100;
             }
         } // end if
     } // CaProd
-    resultstring = '';
+
+    // Alk product
     if (CurrAlk > 0) {
         if (alktype == 'd') {
             CurrAlk = CurrAlk / 2.8; // convert dKH to meq/l
@@ -1515,6 +1528,5 @@ function calcSupplement() {
             }
         } // end if
     } // MgProd
-    resultstring = '';
     return 0;
 }
